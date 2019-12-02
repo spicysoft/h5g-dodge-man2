@@ -10,10 +10,14 @@
 		"libs/egretmgobe/egretmgobe.js"
 	],
 	"game": [
-		"bin-debug/AssetAdapter.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/system/GameObject.js",
 		"bin-debug/Main.js",
-		"bin-debug/Platform.js",
-		"bin-debug/ThemeAdapter.js"
+		"bin-debug/game/Game.js",
+		"bin-debug/system/Button.js",
+		"bin-debug/system/Camera.js",
+		"bin-debug/system/Random.js",
+		"bin-debug/system/Rect.js",
+		"bin-debug/system/Util.js",
+		"bin-debug/view/StartScene.js"
 	]
 }
