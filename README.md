@@ -5,4 +5,4 @@
 　※Unity tinyで開発したDodge ManのEgretEngine版になります。
 　https://github.com/liberapp-inc/h5g-dodge-man
 # ビルド方法  
-EgretEngineを使用してビルドを行ってください。  
+EgretEngine5.2.30を使用してビルドを行ってください。  
