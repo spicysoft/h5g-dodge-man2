@@ -1,0 +1,69 @@
+class Player extends GameObject{
+
+    static I:Player = null;
+
+    // get x():number { return this.display.x; }
+    // get y():number { return this.display.y; }
+    // set x( x:number ){ this.display.x = x; }
+    // set y( y:number ){ this.display.y = y; }
+
+    x:number;
+    y:number;
+    z:number;
+    radius:number;
+    ball:Ball = null;
+    buttonOffsetX:number = 0;
+
+    button:Button = null;
+    state:()=>void = this.stateNone;
+
+    constructor() {
+        super();
+
+        Player.I = this;
+        
+        this.x = 0;
+        this.y = 300;
+        this.z = 0;
+        this.radius = Util.w(PLAYER_RADIUS_PER_W);
+        this.ball = new Ball( this.x, this.y, this.z, this.radius, PLAYER_COLOR );
+        this.button = new Button( null, 0, 0, 0.5, 0.5, 1, 1, 0x000000, 0.0, null ); // 透明な全画面ボタン
+    }
+
+    onDestroy(){
+        this.ball.destroy();
+        this.button.destroy();
+        Player.I = null;
+    }
+
+    update(){    
+        this.state();
+        this.ball.perspective( this.x, this.y, 0 );
+    }
+
+    setStateNone(){
+        this.state = this.stateNone;
+    }
+    stateNone(){
+        
+    }
+
+    setStateRun(){
+        this.state = this.stateRun;
+    }
+    stateRun() {
+                if( this.button.press ){
+            Game.speed = Game.speed * -1;
+        }
+
+
+        this.x += Game.speed;
+    }
+
+    setStateMiss(){
+ 
+    }
+    stateMiss(){
+        
+    }
+}

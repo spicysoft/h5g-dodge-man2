@@ -29,7 +29,7 @@ var StartScene = (function (_super) {
     };
     StartScene.prototype.update = function () { };
     StartScene.prototype.tap = function (e) {
-        //Player.I.setStateRun();
+        Player.I.setStateRun();
         this.destroy();
     };
     StartScene.I = null;

@@ -26,7 +26,7 @@ class StartScene extends GameObject{
     update() {}
 
     tap(e:egret.TouchEvent){
-        //Player.I.setStateRun();
+        Player.I.setStateRun();
         this.destroy();
     }
 }
