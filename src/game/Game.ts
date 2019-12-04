@@ -13,7 +13,7 @@ class Game {
         Camera2D.y = Util.h(-0.5);
 
         new Player();
-
+        new Wall();
         new StartScene();
 
     }

@@ -15,6 +15,7 @@ var Game = (function () {
         Camera2D.x = Util.w(-0.5);
         Camera2D.y = Util.h(-0.5);
         new Player();
+        new Wall();
         new StartScene();
     };
     return Game;
