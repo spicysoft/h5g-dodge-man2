@@ -30,6 +30,11 @@ var StartScene = (function (_super) {
     StartScene.prototype.update = function () { };
     StartScene.prototype.tap = function (e) {
         Player.I.setStateRun();
+        var i;
+        for (i = 0; i < Wall.I.length; i++) {
+            Wall.I[i].setStateRun();
+        }
+        Game.goinside = true;
         this.destroy();
     };
     StartScene.I = null;

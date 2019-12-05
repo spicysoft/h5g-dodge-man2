@@ -26,7 +26,13 @@ class StartScene extends GameObject{
     update() {}
 
     tap(e:egret.TouchEvent){
+
         Player.I.setStateRun();
+         var i;
+          for (i = 0; i < Wall.I.length; i++) {
+              Wall.I[i].setStateRun();
+            }
+        Game.goinside = true;
         this.destroy();
     }
 }

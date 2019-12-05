@@ -55,8 +55,6 @@ class Player extends GameObject{
                 if( this.button.press ){
             Game.speed = Game.speed * -1;
         }
-
-
         this.x += Game.speed;
     }
 
