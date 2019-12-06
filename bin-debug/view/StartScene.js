@@ -30,6 +30,11 @@ var StartScene = (function (_super) {
     StartScene.prototype.update = function () { };
     StartScene.prototype.tap = function (e) {
         Player.I.setStateRun();
+        Wave.spawn();
+        var n;
+        for (n = 0; n < Obstacle.I.length; n++) {
+            Obstacle.I[n].setStateRun();
+        }
         var i;
         for (i = 0; i < Wall.I.length; i++) {
             Wall.I[i].setStateRun();

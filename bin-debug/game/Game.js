@@ -4,7 +4,7 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
 var BACK_COLOR = 0xD8A4FF;
 var FONT_COLOR = 0x000000;
 var PLAYER_RADIUS_PER_W = 0.04;
-var PLAYER_COLOR = 0x000000;
+var PLAYER_COLOR = 0x424242;
 var CAMERA_Y_PER_W = -0.4;
 var CAM_PERS_Y_PER_W = -CAMERA_Y_PER_W * 2;
 var WALL_ADD_SPEED = 0.05;
@@ -15,9 +15,11 @@ var Game = (function () {
     Game.loadSceneGamePlay = function () {
         Game.speed = 3;
         Game.wallspeed = 0.1;
+        Game.obstaclespeed = 3;
         Camera2D.x = Util.w(-0.5);
         Camera2D.y = Util.h(-0.5);
         new Player();
+        new Wave();
         var i;
         for (i = 0; i < 2; i++) {
             new Wall();
