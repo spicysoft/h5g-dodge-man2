@@ -9,6 +9,8 @@ var CAMERA_Y_PER_W = -0.4;
 var CAM_PERS_Y_PER_W = -CAMERA_Y_PER_W * 2;
 var WALL_ADD_SPEED = 0.05;
 var WALL_MAX_SPEED = 1;
+var OBSTACLE_ADD_SPEED = 0.1;
+var OBSTACLE_MAX_SPEED = 10;
 var Game = (function () {
     function Game() {
     }
@@ -19,11 +21,16 @@ var Game = (function () {
         Camera2D.x = Util.w(-0.5);
         Camera2D.y = Util.h(-0.5);
         new Player();
-        new Wave();
+        //new Wave();
         var i;
         for (i = 0; i < 2; i++) {
             new Wall();
         }
+        var n;
+        for (n = 0; n < 4; n++) {
+            new Obstacle();
+        }
+        Wave.ObstacleSet();
         new StartScene();
     };
     return Game;

@@ -6,6 +6,8 @@ const CAMERA_Y_PER_W = -0.4;
 const CAM_PERS_Y_PER_W = -CAMERA_Y_PER_W * 2;
 const WALL_ADD_SPEED = 0.05;
 const WALL_MAX_SPEED = 1;
+const OBSTACLE_ADD_SPEED = 0.1;
+const OBSTACLE_MAX_SPEED = 10;
 
 class Game {
 
@@ -17,22 +19,22 @@ class Game {
         Camera2D.y = Util.h(-0.5);
 
         new Player();
-        new Wave();
+        //new Wave();
         var i;
-        for (i = 0; i < 2; i++) {
-            
+        for (i = 0; i < 2; i++) {    
             new Wall();
-
             }
-        
+        var n;
+        for (n = 0; n < 4; n++) {           
+            new Obstacle();
+            }
+        Wave.ObstacleSet();
         new StartScene();
-        
-
     }
     static speed:number;
     static wallspeed:number;
     static obstaclespeed:number;
-    static obstacledistance:number;
+    //static obstacledistance:number;
     static goinside:boolean;
     static goright:boolean;
     static goleft:boolean;

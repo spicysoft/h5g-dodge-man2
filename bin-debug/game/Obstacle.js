@@ -13,7 +13,6 @@ var Obstacle = (function (_super) {
     function Obstacle() {
         var _this = _super.call(this) || this;
         _this.ball = null;
-        _this.distance = 0;
         _this.state = _this.stateNone;
         Obstacle.I.push(_this);
         _this.x = 0;
@@ -24,7 +23,6 @@ var Obstacle = (function (_super) {
         return _this;
     }
     Obstacle.prototype.onDestroy = function () {
-        //Obstacle.I = Obstacle.I .filter( obj => obj != this );
     };
     Obstacle.prototype.update = function () {
         this.state();
@@ -40,16 +38,11 @@ var Obstacle = (function (_super) {
     Obstacle.prototype.stateRun = function () {
         this.ball.perspective(this.x, this.y, 0);
         this.y += Game.obstaclespeed;
-        this.distance += 1;
-        if (this.distance > 100) {
-            Wave.spawn();
-            this.distance = 0;
-        }
-        if (this.y > 400) {
-            this.state = this.stateMiss;
-            this.onDestroy();
-            this.destroy();
-            this.ball.destroy();
+        if (this.y > 800) {
+            this.y = -800;
+            if (Game.obstaclespeed < OBSTACLE_MAX_SPEED) {
+                Game.obstaclespeed += OBSTACLE_ADD_SPEED;
+            }
         }
     };
     Obstacle.prototype.setStateMiss = function () {

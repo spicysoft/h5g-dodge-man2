@@ -1,12 +1,7 @@
 class Player extends GameObject{
 
     static I:Player = null;
-
-    // get x():number { return this.display.x; }
-    // get y():number { return this.display.y; }
-    // set x( x:number ){ this.display.x = x; }
-    // set y( y:number ){ this.display.y = y; }
-
+    
     x:number;
     y:number;
     z:number;

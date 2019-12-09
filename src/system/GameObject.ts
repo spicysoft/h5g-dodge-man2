@@ -25,7 +25,6 @@ abstract class GameObject {
     destroy() { this.deleteFlag = true; }
     onDestroy(){}
 
-    // system
     
     private static objects: GameObject[] = [];
     public static baseDisplay: egret.DisplayObjectContainer;

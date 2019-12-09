@@ -55,7 +55,6 @@ var GameObject = (function () {
             this.display = null;
         }
     };
-    // system
     GameObject.objects = [];
     return GameObject;
 }());

@@ -1,12 +1,6 @@
 class Wall extends GameObject{
 
     static I :Wall[] = [];
-
-    // get x():number { return this.display.x; }
-    // get y():number { return this.display.y; }
-    // set x( x:number ){ this.display.x = x; }
-    // set y( y:number ){ this.display.y = y; }
-
     x:number;
     y:number;
     w:number;
