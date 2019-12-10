@@ -9,6 +9,7 @@ var CAMERA_Y_PER_W = -0.4;
 var CAM_PERS_Y_PER_W = -CAMERA_Y_PER_W * 2;
 var WALL_ADD_SPEED = 0.05;
 var WALL_MAX_SPEED = 1;
+var WALL_WIDTH_W = 50;
 var OBSTACLE_ADD_SPEED = 0.1;
 var OBSTACLE_MAX_SPEED = 10;
 var Game = (function () {

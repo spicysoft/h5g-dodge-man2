@@ -40,6 +40,24 @@ class Obstacle extends GameObject{
 
         }
     }
+
+    static detectObstacle( x:number, y:number ):boolean { 
+        let flag = false;
+        const r = Util.w(PLAYER_RADIUS_PER_W + PLAYER_RADIUS_PER_W);
+        const rr = r ** 2;
+        Obstacle.I.forEach( p => {
+            let dx = p.x - x;
+            let dy = p.y - y;
+            if( dy**2 <= rr ){
+                if( dx**2 <= rr ){
+                    flag = true;
+                    console.log("rr="+ rr+ " dx**2 + (dy*4)**2="+dx**2 + (dy*4)**2);
+                }
+            }
+        });
+
+        return flag;
+    }
     setStateMiss(){
     }
     stateMiss(){

@@ -51,6 +51,16 @@ class Player extends GameObject{
             Game.speed = Game.speed * -1;
         }
         this.x += Game.speed;
+        if( Obstacle.detectObstacle( this.x, this.y ) ||Wall.detectObstacle( this.x, this.y ) ){
+             this.state = this.setStateMiss;
+             Obstacle.I.forEach( p => {
+           p.state = p.setStateMiss;
+        });
+          Wall.I.forEach( p => {
+           p.state = p.setStateMiss;
+        });
+        }
+                
     }
 
     setStateMiss(){

@@ -6,6 +6,7 @@ const CAMERA_Y_PER_W = -0.4;
 const CAM_PERS_Y_PER_W = -CAMERA_Y_PER_W * 2;
 const WALL_ADD_SPEED = 0.05;
 const WALL_MAX_SPEED = 1;
+const WALL_WIDTH_W = 50;
 const OBSTACLE_ADD_SPEED = 0.1;
 const OBSTACLE_MAX_SPEED = 10;
 

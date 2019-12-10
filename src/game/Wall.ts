@@ -9,8 +9,6 @@ class Wall extends GameObject{
     rect:Rect = null;
     state:()=>void = this.stateNone;
 
-
-
     constructor() {
         super();
         Wall.I.push(this);
@@ -21,7 +19,7 @@ class Wall extends GameObject{
         this.x = 320;
         }
         this.y = -1000;
-        this.w = 50;
+        this.w = WALL_WIDTH_W;
         this.h = 2000;
         this.color = PLAYER_COLOR;
         this.rect = new Rect( this.x, this.y, this.w, this.h, this.color );
@@ -43,8 +41,25 @@ class Wall extends GameObject{
      setStateRun(){
         this.state = this.stateRun;
     }
-     stateRun() {
+    setStateMiss(){
+    }
+    
+    static detectObstacle( x:number, y:number ):boolean { 
+        let flag = false;
+        const r = WALL_WIDTH_W;
+        const rr = r ** 2;
+        Wall.I.forEach( p => {
+            let dx = p.x - x;
+            //let dy = p.y - y;
+            if( dx**2 <= rr ){
 
+                    flag = true;
+
+            }
+        });
+        return flag;
+    }
+     stateRun() {
          var i;
          for (i = 0; i < Wall.I.length; i++) {
 

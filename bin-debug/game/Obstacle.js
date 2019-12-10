@@ -45,6 +45,22 @@ var Obstacle = (function (_super) {
             }
         }
     };
+    Obstacle.detectObstacle = function (x, y) {
+        var flag = false;
+        var r = Util.w(PLAYER_RADIUS_PER_W + PLAYER_RADIUS_PER_W);
+        var rr = Math.pow(r, 2);
+        Obstacle.I.forEach(function (p) {
+            var dx = p.x - x;
+            var dy = p.y - y;
+            if (Math.pow(dy, 2) <= rr) {
+                if (Math.pow(dx, 2) <= rr) {
+                    flag = true;
+                    console.log("rr=" + rr + " dx**2 + (dy*4)**2=" + Math.pow(dx, 2) + Math.pow((dy * 4), 2));
+                }
+            }
+        });
+        return flag;
+    };
     Obstacle.prototype.setStateMiss = function () {
     };
     Obstacle.prototype.stateMiss = function () {

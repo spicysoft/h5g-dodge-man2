@@ -22,7 +22,7 @@ var Wall = (function (_super) {
             _this.x = 320;
         }
         _this.y = -1000;
-        _this.w = 50;
+        _this.w = WALL_WIDTH_W;
         _this.h = 2000;
         _this.color = PLAYER_COLOR;
         _this.rect = new Rect(_this.x, _this.y, _this.w, _this.h, _this.color);
@@ -40,6 +40,21 @@ var Wall = (function (_super) {
     };
     Wall.prototype.setStateRun = function () {
         this.state = this.stateRun;
+    };
+    Wall.prototype.setStateMiss = function () {
+    };
+    Wall.detectObstacle = function (x, y) {
+        var flag = false;
+        var r = WALL_WIDTH_W;
+        var rr = Math.pow(r, 2);
+        Wall.I.forEach(function (p) {
+            var dx = p.x - x;
+            //let dy = p.y - y;
+            if (Math.pow(dx, 2) <= rr) {
+                flag = true;
+            }
+        });
+        return flag;
     };
     Wall.prototype.stateRun = function () {
         var i;
