@@ -58,8 +58,13 @@ var Player = (function (_super) {
         }
     };
     Player.prototype.setStateMiss = function () {
+        this.state = this.stateMiss;
+        new GameOver();
+        EffectLine.create(this.x, this.y, this.radius, PLAYER_COLOR, 4);
     };
     Player.prototype.stateMiss = function () {
+        this.y = 800;
+        console.log("hi" + this.y);
     };
     Player.I = null;
     return Player;

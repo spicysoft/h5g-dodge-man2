@@ -41,6 +41,10 @@ var Wall = (function (_super) {
     Wall.prototype.setStateRun = function () {
         this.state = this.stateRun;
     };
+    Wall.prototype.onDestroy = function () {
+        this.rect.destroy();
+        Wall.I = [];
+    };
     Wall.prototype.setStateMiss = function () {
     };
     Wall.detectObstacle = function (x, y) {

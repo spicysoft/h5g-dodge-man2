@@ -1,3 +1,4 @@
+const SAVE_KEY_BESTSCORE = "dodgeman-bestScore";
 const BACK_COLOR = 0xD8A4FF; 
 const FONT_COLOR = 0x000000;
 const PLAYER_RADIUS_PER_W = 0.04;
@@ -15,6 +16,9 @@ class Game {
     static loadSceneGamePlay() {
         Game.speed = 3;
         Game.wallspeed = 0.1;
+        Game.goinside = true;
+        Game.goright = false;
+        Game.goleft = false;
         Game.obstaclespeed = 3;
         Camera2D.x = Util.w(-0.5);
         Camera2D.y = Util.h(-0.5);
@@ -31,7 +35,9 @@ class Game {
             }
         Wave.ObstacleSet();
         new StartScene();
+        new Score();
     }
+   
     static speed:number;
     static wallspeed:number;
     static obstaclespeed:number;

@@ -13,6 +13,7 @@ var Obstacle = (function (_super) {
     function Obstacle() {
         var _this = _super.call(this) || this;
         _this.ball = null;
+        _this.point = null;
         _this.state = _this.stateNone;
         Obstacle.I.push(_this);
         _this.x = 0;
@@ -20,9 +21,12 @@ var Obstacle = (function (_super) {
         _this.z = 0;
         _this.radius = Util.w(PLAYER_RADIUS_PER_W);
         _this.ball = new Ball(_this.x, _this.y, _this.z, _this.radius, PLAYER_COLOR);
+        _this.point = false;
         return _this;
     }
     Obstacle.prototype.onDestroy = function () {
+        this.ball.destroy();
+        Obstacle.I = [];
     };
     Obstacle.prototype.update = function () {
         this.state();
@@ -38,8 +42,13 @@ var Obstacle = (function (_super) {
     Obstacle.prototype.stateRun = function () {
         this.ball.perspective(this.x, this.y, 0);
         this.y += Game.obstaclespeed;
+        if (!this.point && this.y > 300) {
+            Score.I.addPoint();
+            this.point = true;
+        }
         if (this.y > 800) {
             this.y = -800;
+            this.point = false;
             if (Game.obstaclespeed < OBSTACLE_MAX_SPEED) {
                 Game.obstaclespeed += OBSTACLE_ADD_SPEED;
             }
@@ -47,16 +56,14 @@ var Obstacle = (function (_super) {
     };
     Obstacle.detectObstacle = function (x, y) {
         var flag = false;
-        var r = Util.w(PLAYER_RADIUS_PER_W + PLAYER_RADIUS_PER_W);
-        var rr = Math.pow(r, 2);
+        var r = Util.w(PLAYER_RADIUS_PER_W);
         Obstacle.I.forEach(function (p) {
             var dx = p.x - x;
             var dy = p.y - y;
-            if (Math.pow(dy, 2) <= rr) {
-                if (Math.pow(dx, 2) <= rr) {
-                    flag = true;
-                    console.log("rr=" + rr + " dx**2 + (dy*4)**2=" + Math.pow(dx, 2) + Math.pow((dy * 4), 2));
-                }
+            var c = Math.sqrt(dx * dx + dy * dy);
+            if (c <= r + r) {
+                flag = true;
+                console.log("c" + c + "r+r" + r + r);
             }
         });
         return flag;

@@ -6,6 +6,7 @@ class Obstacle extends GameObject{
     z:number;
     radius:number;
     ball:Ball = null;
+    point:boolean = null;
     state:()=>void = this.stateNone;
     constructor() {
         super();
@@ -15,8 +16,13 @@ class Obstacle extends GameObject{
         this.z = 0;
         this.radius = Util.w(PLAYER_RADIUS_PER_W);
         this.ball = new Ball( this.x, this.y, this.z, this.radius, PLAYER_COLOR );
+        this.point = false;
     }
     onDestroy(){
+        this.ball.destroy();
+         Obstacle.I= [];
+
+
     }
     update(){    
         this.state();
@@ -32,8 +38,13 @@ class Obstacle extends GameObject{
     stateRun() {   
         this.ball.perspective( this.x, this.y, 0 );
         this.y += Game.obstaclespeed;
+        if(!this.point && this.y > 300){
+            Score.I.addPoint();
+            this.point =true;
+        }
         if(this.y > 800){
              this.y = -800;
+             this.point =false;
              if(Game.obstaclespeed <OBSTACLE_MAX_SPEED){
                  Game.obstaclespeed  += OBSTACLE_ADD_SPEED;
                 }
@@ -43,16 +54,15 @@ class Obstacle extends GameObject{
 
     static detectObstacle( x:number, y:number ):boolean { 
         let flag = false;
-        const r = Util.w(PLAYER_RADIUS_PER_W + PLAYER_RADIUS_PER_W);
-        const rr = r ** 2;
+        const r = Util.w(PLAYER_RADIUS_PER_W );
         Obstacle.I.forEach( p => {
             let dx = p.x - x;
             let dy = p.y - y;
-            if( dy**2 <= rr ){
-                if( dx**2 <= rr ){
+            let c = Math.sqrt(dx*dx +dy*dy);
+            if( c <= r+r ){
                     flag = true;
-                    console.log("rr="+ rr+ " dx**2 + (dy*4)**2="+dx**2 + (dy*4)**2);
-                }
+                    console.log("c"+ c+ "r+r"+r+r);
+
             }
         });
 

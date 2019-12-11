@@ -17,6 +17,12 @@ var Rect = (function () {
     };
     Rect.prototype.update = function () {
     };
+    Rect.prototype.destroy = function () {
+        if (this.shape) {
+            this.shape.parent.removeChild(this.shape);
+            this.shape = null;
+        }
+    };
     Rect.prototype.perspective = function (x, y, w) {
         this.shape.x = x - w / 2;
         this.shape.y = y;

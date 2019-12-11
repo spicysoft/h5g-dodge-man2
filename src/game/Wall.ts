@@ -41,6 +41,10 @@ class Wall extends GameObject{
      setStateRun(){
         this.state = this.stateRun;
     }
+    onDestroy(){
+        this.rect.destroy();
+        Wall.I = [];
+    }
     setStateMiss(){
     }
     

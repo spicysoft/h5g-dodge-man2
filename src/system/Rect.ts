@@ -23,6 +23,13 @@ class Rect {
     update() {
         
     }
+       destroy(){
+        if( this.shape ){
+            this.shape.parent.removeChild(this.shape);
+            this.shape = null;
+        }
+    }
+
 
     perspective(x:number, y:number, w:number) {        
         this.shape.x = x - w /2;

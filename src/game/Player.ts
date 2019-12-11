@@ -64,9 +64,15 @@ class Player extends GameObject{
     }
 
     setStateMiss(){
- 
+        this.state = this.stateMiss;
+        new GameOver();
+        EffectLine.create( this.x, this.y, this.radius, PLAYER_COLOR, 4 );
     }
     stateMiss(){
-        
+      this.y = 800;
+      console.log("hi"+this.y);
     }
+
+
+
 }
