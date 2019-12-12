@@ -1,5 +1,5 @@
 const SAVE_KEY_BESTSCORE = "dodgeman-bestScore";
-const BACK_COLOR = 0xD8A4FF; 
+const BACK_COLOR = 0x6F81DB; 
 const FONT_COLOR = 0x000000;
 const PLAYER_RADIUS_PER_W = 0.04;
 const PLAYER_COLOR = 0x424242;

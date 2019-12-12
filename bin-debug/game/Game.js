@@ -2,7 +2,7 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
 var SAVE_KEY_BESTSCORE = "dodgeman-bestScore";
-var BACK_COLOR = 0xD8A4FF;
+var BACK_COLOR = 0x6F81DB;
 var FONT_COLOR = 0x000000;
 var PLAYER_RADIUS_PER_W = 0.04;
 var PLAYER_COLOR = 0x424242;
